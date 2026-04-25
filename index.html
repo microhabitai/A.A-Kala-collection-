@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A.A KALA COLLECTIONS</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #f7f2eb;
+    --warm-white: #faf7f3;
+    --gold: #b8922a;
+    --gold-light: #d4aa4a;
+    --charcoal: #1c1a18;
+    --dark: #2a2520;
+    --muted: #8a7f75;
+    --border: rgba(184,146,42,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 5%;
+    background: rgba(250,247,243,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    animation: fadeDown .8s ease both;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; letter-spacing: .25em;
+    color: var(--charcoal); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color .25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+    padding: 10px 22px; border: 1px solid var(--gold);
+    color: var(--gold); text-decoration: none;
+    transition: all .25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--warm-white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 6% 80px 8%;
+    animation: fadeUp .9s .2s ease both;
+  }
+  .hero-eyebrow {
+    font-size: .68rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.06;
+    color: var(--charcoal); margin-bottom: 28px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-desc {
+    font-size: .9rem; line-height: 1.85; color: var(--muted);
+    max-width: 380px; margin-bottom: 44px; font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 14px 34px; background: var(--charcoal); color: var(--cream);
+    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    text-decoration: none; transition: all .28s;
+  }
+  .btn-primary:hover { background: var(--gold); }
+  .btn-outline {
+    padding: 14px 34px; border: 1px solid var(--charcoal); color: var(--charcoal);
+    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    text-decoration: none; transition: all .28s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    animation: fadeIn 1s .3s ease both;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #c4a45a22 0%, #8b6b2a44 100%);
+    z-index: 1;
+  }
+  .hero-img-grid {
+    display: grid; grid-template-rows: 60% 40%; height: 100%;
+  }
+  .hero-img-top {
+    background: linear-gradient(160deg, #2a2520 0%, #3d3025 50%, #1c1a18 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-img-top::after {
+    content: 'A.A KALA';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300; letter-spacing: .15em;
+    color: rgba(184,146,42,0.12); position: absolute;
+  }
+  .fabric-icon {
+    width: 120px; height: 120px;
+    border: 1px solid rgba(184,146,42,0.4);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 2;
+  }
+  .fabric-icon svg { width: 60px; height: 60px; opacity: .7; }
+  .hero-img-bottom {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .swatch { display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .swatch-1 { background: linear-gradient(135deg, #8b6914, #c4a445); }
+  .swatch-2 { background: linear-gradient(135deg, #2a2520, #4a3f35); }
+  .swatch::after {
+    content: attr(data-label);
+    font-size: .58rem; letter-spacing: .25em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    overflow: hidden; background: var(--charcoal); padding: 14px 0;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .marquee {
+    display: flex; gap: 0; animation: marquee 22s linear infinite; width: max-content;
+  }
+  .marquee-item {
+    white-space: nowrap; padding: 0 48px;
+    font-size: .65rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 48px;
+  }
+  .marquee-item::after { content: '✦'; opacity: .5; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 8%; }
+  .section-eyebrow {
+    font-size: .65rem; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); display: block; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300;
+    color: var(--charcoal); line-height: 1.15;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ── COLLECTIONS ── */
+  .collections { background: var(--cream); }
+  .collections-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px; flex-wrap: wrap; gap: 20px;
+  }
+  .view-all {
+    font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--border);
+    padding-bottom: 2px; transition: border-color .25s;
+  }
+  .view-all:hover { border-color: var(--gold); }
+
+  .products-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .product-card {
+    cursor: pointer; transition: transform .3s ease;
+  }
+  .product-card:hover { transform: translateY(-6px); }
+  .product-card:hover .product-img-inner { transform: scale(1.04); }
+  .product-img {
+    aspect-ratio: 3/4; overflow: hidden; margin-bottom: 18px; position: relative;
+  }
+  .product-img-inner {
+    width: 100%; height: 100%; transition: transform .5s ease;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .p1 { background: linear-gradient(160deg, #3d2b1f 0%, #6b4226 60%, #8b5e3c 100%); }
+  .p2 { background: linear-gradient(160deg, #1a2435 0%, #2d3f5a 60%, #4a6080 100%); }
+  .p3 { background: linear-gradient(160deg, #2a1f14 0%, #4a3520 60%, #6b5030 100%); }
+  .p4 { background: linear-gradient(160deg, #14261a 0%, #1f3d28 60%, #2d5538 100%); }
+  .p5 { background: linear-gradient(160deg, #261419 0%, #3d1f28 60%, #5a2d38 100%); }
+  .p6 { background: linear-gradient(160deg, #1f1a10 0%, #352e18 60%, #4a4020 100%); }
+  .prod-label {
+    font-size: 3.5rem; font-weight: 300; color: rgba(255,255,255,0.08); letter-spacing: .05em;
+  }
+  .product-badge {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--gold); color: var(--charcoal);
+    font-size: .55rem; letter-spacing: .2em; text-transform: uppercase;
+    padding: 4px 10px;
+  }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400; margin-bottom: 4px;
+  }
+  .product-meta {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .product-category { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+  .product-price { font-size: .88rem; font-weight: 500; color: var(--gold); }
+
+  /* ── ABOUT ── */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-visual {
+    position: relative; aspect-ratio: 4/5;
+    background: linear-gradient(145deg, #2a2520, #1c1a18);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px;
+    border: 1px solid var(--border); z-index: -1;
+  }
+  .about-monogram {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem; font-weight: 300; color: rgba(184,146,42,0.15);
+    letter-spacing: .1em;
+  }
+  .about-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--gold); color: var(--charcoal);
+    padding: 22px 26px; text-align: center;
+  }
+  .about-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; display: block; }
+  .about-badge-text { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; }
+  .about-text { }
+  .about-text p {
+    font-size: .9rem; line-height: 1.9; color: var(--muted); margin-top: 24px; font-weight: 300;
+  }
+  .about-features { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .feature { border-top: 1px solid var(--border); padding-top: 20px; }
+  .feature-icon { font-size: 1.2rem; margin-bottom: 8px; }
+  .feature-name { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 6px; color: var(--charcoal); }
+  .feature-desc { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--charcoal); color: var(--cream);
+    text-align: center; padding: 90px 8%;
+    position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: 'KALA';
+    position: absolute; font-family: 'Cormorant Garamond', serif;
+    font-size: 18rem; font-weight: 300; color: rgba(184,146,42,0.04);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    letter-spacing: .2em; white-space: nowrap; pointer-events: none;
+  }
+  .cta-banner .section-eyebrow { justify-content: center; color: var(--gold-light); }
+  .cta-banner .section-eyebrow::before { background: var(--gold-light); }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.1;
+    margin-bottom: 20px; color: var(--cream);
+  }
+  .cta-title em { font-style: italic; color: var(--gold-light); }
+  .cta-sub { font-size: .88rem; color: rgba(247,242,235,0.5); margin-bottom: 44px; font-weight: 300; }
+  .btn-gold {
+    display: inline-block; padding: 16px 44px;
+    background: var(--gold); color: var(--charcoal);
+    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    text-decoration: none; transition: all .28s; font-weight: 500;
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  /* ── CONTACT ── */
+  .contact-section { background: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; margin-top: 60px; }
+  .contact-info { }
+  .contact-item { display: flex; gap: 18px; margin-bottom: 36px; align-items: flex-start; }
+  .contact-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .contact-label { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .contact-value { font-size: .92rem; color: var(--charcoal); }
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+  .form-group input, .form-group textarea, .form-group select {
+    background: transparent; border: 1px solid rgba(28,26,24,0.2);
+    padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: .85rem;
+    color: var(--charcoal); transition: border-color .25s; outline: none;
+    resize: none;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea { min-height: 110px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal); color: rgba(247,242,235,0.45);
+    padding: 50px 8% 30px;
+  }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 30px; border-bottom: 1px solid rgba(184,146,42,0.15); flex-wrap: wrap; gap: 20px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    color: var(--cream); letter-spacing: .2em;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(247,242,235,0.3); margin-top: 4px; }
+  .footer-links { display: flex; gap: 30px; flex-wrap: wrap; }
+  .footer-links a { font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(247,242,235,0.4); text-decoration: none; transition: color .25s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: .65rem; }
+  .footer-social { display: flex; gap: 16px; }
+  .social-btn {
+    width: 34px; height: 34px; border: 1px solid rgba(184,146,42,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem; color: rgba(247,242,235,0.4); text-decoration: none;
+    transition: all .25s;
+  }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeUp   { from { opacity: 0; transform: translateY(28px);  } to { opacity: 1; transform: none; } }
+  @keyframes fadeIn   { from { opacity: 0; }                               to { opacity: 1; } }
+  @keyframes marquee  { from { transform: translateX(0); }                 to { transform: translateX(-50%); } }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 55vw; }
+    .hero-left { padding: 60px 6%; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .about { grid-template-columns: 1fr; gap: 50px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 560px) {
+    .products-grid { grid-template-columns: 1fr; }
+    section { padding: 70px 6%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">A.A <span>KALA</span></a>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Shop Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">New Arrivals 2025</div>
+    <h1 class="hero-title">Where <em>Style</em><br>Meets<br>Elegance</h1>
+    <p class="hero-desc">Discover curated fashion pieces crafted for the modern woman — from everyday chic to statement looks that turn heads.</p>
+    <div class="hero-btns">
+      <a href="#collections" class="btn-primary">Shop Collection</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-grid">
+      <div class="hero-img-top">
+        <div class="fabric-icon">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 50 Q20 10 30 30 Q40 50 50 10" stroke="#b8922a" stroke-width="1" fill="none"/>
+            <path d="M15 55 Q25 15 35 35 Q45 55 55 15" stroke="#b8922a" stroke-width="1" fill="none" opacity=".5"/>
+            <circle cx="30" cy="30" r="20" stroke="#b8922a" stroke-width=".5" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hero-img-bottom">
+        <div class="swatch swatch-1" data-label="Gold"></div>
+        <div class="swatch swatch-2" data-label="Noir"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <div class="marquee-item">Premium Fabrics</div>
+    <div class="marquee-item">Exclusive Designs</div>
+    <div class="marquee-item">Lagos Fashion</div>
+    <div class="marquee-item">Handpicked Styles</div>
+    <div class="marquee-item">Timeless Elegance</div>
+    <div class="marquee-item">Premium Fabrics</div>
+    <div class="marquee-item">Exclusive Designs</div>
+    <div class="marquee-item">Lagos Fashion</div>
+    <div class="marquee-item">Handpicked Styles</div>
+    <div class="marquee-item">Timeless Elegance</div>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="collections reveal" id="collections">
+  <div class="collections-header">
+    <div>
+      <div class="section-eyebrow">Our Products</div>
+      <h2 class="section-title">Featured <em>Collection</em></h2>
+    </div>
+    <a href="#contact" class="view-all">View All Pieces →</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-img">
+        <div class="product-img-inner p1"><span class="prod-label">01</span></div>
+        <div class="product-badge">New</div>
+      </div>
+      <div class="product-meta" style="margin-bottom:4px">
+        <span class="product-category">Ankara Dress</span>
+        <span class="product-price">₦28,500</span>
+      </div>
+      <div class="product-name">Sunset Bloom Kaftan</div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <div class="product-img-inner p2"><span class="prod-label">02</span></div>
+      </div>
+      <div class="product-meta" style="margin-bottom:4px">
+        <span class="product-category">Corporate Wear</span>
+        <span class="product-price">₦35,000</span>
+      </div>
+      <div class="product-name">Midnight Executive Set</div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <div class="product-img-inner p3"><span class="prod-label">03</span></div>
+        <div class="product-badge">Trending</div>
+      </div>
+      <div class="product-meta" style="margin-bottom:4px">
+        <span class="product-category">Casual Wear</span>
+        <span class="product-price">₦19,500</span>
+      </div>
+      <div class="product-name">Cocoa Linen Co-ord</div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <div class="product-img-inner p4"><span class="prod-label">04</span></div>
+      </div>
+      <div class="product-meta" style="margin-bottom:4px">
+        <span class="product-category">Evening Wear</span>
+        <span class="product-price">₦44,000</span>
+      </div>
+      <div class="product-name">Emerald Gala Gown</div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <div class="product-img-inner p5"><span class="prod-label">05</span></div>
+        <div class="product-badge">New</div>
+      </div>
+      <div class="product-meta" style="margin-bottom:4px">
+        <span class="product-category">Traditional</span>
+        <span class="product-price">₦52,000</span>
+      </div>
+      <div class="product-name">Rose Aso-oke Ensemble</div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img">
+        <div class="product-img-inner p6"><span class="prod-label">06</span></div>
+      </div>
+      <div class="product-meta" style="margin-bottom:4px">
+        <span class="product-category">Accessories</span>
+        <span class="product-price">₦8,500</span>
+      </div>
+      <div class="product-name">Golden Thread Headwrap</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about reveal">
+    <div class="about-visual">
+      <div class="about-monogram">AK</div>
+      <div class="about-badge">
+        <span class="about-badge-num">10+</span>
+        <span class="about-badge-text">Years of Style</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-eyebrow">Our Story</div>
+      <h2 class="section-title">Fashion Born from <em>Passion</em></h2>
+      <p>A.A KALA COLLECTIONS was built on a simple belief — every woman deserves to feel extraordinary. We curate fashion that blends culture, class, and contemporary style into pieces you'll love to wear.</p>
+      <p>From vibrant Ankara prints to sleek corporate fits, our collection speaks to the bold, beautiful, and modern Nigerian woman.</p>
+      <div class="about-features">
+        <div class="feature">
+          <div class="feature-icon">✦</div>
+          <div class="feature-name">Quality Fabrics</div>
+          <div class="feature-desc">Only the finest materials make it into our collection.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✦</div>
+          <div class="feature-name">Unique Designs</div>
+          <div class="feature-desc">Styles you won't find anywhere else.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✦</div>
+          <div class="feature-name">Fast Delivery</div>
+          <div class="feature-desc">Quick nationwide shipping at your convenience.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✦</div>
+          <div class="feature-name">Easy Returns</div>
+          <div class="feature-desc">Hassle-free returns within 7 days.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner reveal">
+  <div class="section-eyebrow">Limited Stock Available</div>
+  <h2 class="cta-title">Step Into Your <em>Finest</em> Self</h2>
+  <p class="cta-sub">New pieces arrive weekly. Be the first to know about exclusive drops.</p>
+  <a href="#contact" class="btn-gold">Shop the Collection</a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section reveal" id="contact">
+  <div class="section-eyebrow">Get in Touch</div>
+  <h2 class="section-title">Order or <em>Enquire</em></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Lagos, Nigeria</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone / WhatsApp</div>
+          <div class="contact-value">+234 800 000 0000</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📷</div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value">@aa.kala.collections</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Hours</div>
+          <div class="contact-value">Mon – Sat, 9am – 7pm</div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+234..." />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>What are you interested in?</label>
+        <select>
+          <option value="">Select a category</option>
+          <option>Ankara / Traditional Wear</option>
+          <option>Corporate Wear</option>
+          <option>Casual & Everyday</option>
+          <option>Evening & Occasion</option>
+          <option>Accessories</option>
+          <option>Custom Order</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us what you're looking for..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="border:none;cursor:pointer;width:100%;text-align:center;">Send Enquiry →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">A.A <span>KALA</span></div>
+      <div class="footer-tagline">Fashion & Collections · Lagos, Nigeria</div>
+    </div>
+    <div class="footer-links">
+      <a href="#collections">Collections</a>
+      <a href="#about">About</a>
+      <a href="#contact">Order Now</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 A.A KALA COLLECTIONS. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="#" class="social-btn">in</a>
+      <a href="#" class="social-btn">ig</a>
+      <a href="#" class="social-btn">wa</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = '#b8922a';
+    setTimeout(() => { btn.textContent = 'Send Enquiry →'; btn.style.background = ''; }, 3000);
+  }
+</script>
+</body>
+</html>
